@@ -26,9 +26,51 @@
 
 ---
 
-## 📱 手机微信交互示例 (Commands)
+## 🚀 极速上手 (Quick Start)
 
-| 发送内容 | 功能与效果 |
+### 🥇 方式 1：🔥 专属 AI 提示词全自动配置 (最推荐，纯自然语言)
+
+如果你正在使用 **Antigravity IDE**，你**甚至不需要手动敲命令行**！
+
+直接在 Antigravity 聊天框中对 AI 发送任意一句提示词：
+
+> 💬 **“帮我配置并绑定微信”**  
+> *(或者：“启动微信网关扫码配置”)*
+
+#### 🤖 Antigravity 将全自动为你完成：
+1. 自动执行配置向导并**在屏幕上弹出腾讯官方专属微信绑定二维码**；
+2. 拿起手机微信扫码并点击【确认绑定】；
+3. **AI 会自动写入凭证、注入 Windows 开机自启，并静默拉起后台托盘网关**！全程零手动配置！
+
+---
+
+### 🥈 方式 2：终端一键配置 (扫码即用)
+
+在终端中只需一行命令：
+
+```bash
+git clone https://github.com/Keep-Self-Alive/antigravity-wechat-bridge.git
+cd antigravity-wechat-bridge
+npm install
+
+# 启动一键配置向导（会自动弹出发版二维码，微信扫码后全自动保存配置、注入开机自启并启动托盘服务）
+npm run setup
+```
+
+---
+
+### 🥉 方式 3：手动自定义配置
+
+1. 复制环境变量模板：`cp .env.example .env` 并填入 Token
+2. 启动服务：`npm run wechat:live` 或 `python scripts/tray_companion.py`
+
+---
+
+## 📱 手机微信交互指令表 (Commands)
+
+随时拿起手机打开微信对话框，直接发送以下指令：
+
+| 用户微信发送 | 触发功能与效果 |
 | :--- | :--- |
 | **直接发文本 / 语音** | 编写代码、解答疑问、生成报表、分析方案或日常情感陪伴 |
 | **直接发图片 / 附件** | 自动流式下载、解密并交由 IDE 模型进行深度多模态分析 |
@@ -38,24 +80,6 @@
 | **`模型`** | 查看 7 大主流 AI 模型剩余配额与刷新倒计时 |
 | **`模型 1`**（~ `模型 7`） | 快速切换底层执行模型（如切换至 Claude Sonnet 4.6） |
 | **`状态`** | 查看 IDE 端口连接与本地同步状态 |
-
----
-
-## 🚀 快速上手 (Quick Start)
-
-### 方式 1：🔥 零门槛一键配置 (极力推荐，扫码即用)
-```bash
-git clone https://github.com/Keep-Self-Alive/antigravity-wechat-bridge.git
-cd antigravity-wechat-bridge
-npm install
-
-# 运行一键配置向导（会自动弹出发版二维码，微信扫码后全自动保存配置、注入开机自启并启动托盘服务）
-npm run setup
-```
-
-### 方式 2：手动自定义配置
-1. 复制模板：`cp .env.example .env` 并填入 Token
-2. 启动服务：`npm run wechat:live` 或 `python scripts/tray_companion.py`
 
 ---
 
@@ -81,6 +105,7 @@ python scripts/register-registry.py
 │   ├── command-router.ts       # 微信中文指令路由器
 │   └── wechat-live-daemon.ts   # 微信长轮询单例主守护进程
 ├── scripts/
+│   ├── auto-setup.ts           # 一键扫码全自动装配向导
 │   ├── tray_companion.py       # 现代系统托盘伴侣 (System Tray)
 │   ├── register-registry.py    # Windows 注册表开机自启注入器
 │   └── test-all-scenarios.ts   # 6 大业务场景端到端实景测试套件

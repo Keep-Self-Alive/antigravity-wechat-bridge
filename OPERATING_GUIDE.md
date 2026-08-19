@@ -1,4 +1,4 @@
-# 📖 Antigravity WeChat Bridge (V1.0 生产版) 运维与使用指南
+# 📖 Antigravity WeChat Bridge (V1.0) 运维与使用指南
 
 > **Google Antigravity IDE ↔ 腾讯微信 AI 官方双向连接网关**
 > 本项目已正式落地保存在：`E:\001核心文件\01项目\antigravity-wechat-bridge`
@@ -26,7 +26,7 @@
 
 ---
 
-### 方式 2：PM2 企业级守护（支持崩溃秒级自愈与开机无感自启）
+### 方式 2：PM2 进程守护（支持崩溃秒级自愈与开机无感自启）
 
 打开电脑终端（CMD / PowerShell），执行：
 
