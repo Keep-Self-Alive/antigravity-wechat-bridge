@@ -28,38 +28,36 @@
 
 ## 🚀 极速上手 (Quick Start)
 
-### 🥇 方式 1：🔥 专属 AI 提示词全自动配置 (最推荐，纯自然语言)
+## 🚀 快速上手 (Quick Start)
 
-如果你正在使用 **Antigravity IDE**，你**甚至不需要手动敲命令行**！
+### 🥇 方式 1：🔥 克隆后交给 Antigravity 一键安装 (推荐)
 
-直接在 Antigravity 聊天框中对 AI 发送任意一句提示词：
-
-> 💬 **“帮我配置并绑定微信”**  
-> *(或者：“启动微信网关扫码配置”)*
-
-#### 🤖 Antigravity 将全自动为你完成：
-1. 自动执行配置向导并**在屏幕上弹出腾讯官方专属微信绑定二维码**；
-2. 拿起手机微信扫码并点击【确认绑定】；
-3. **AI 会自动写入凭证、注入 Windows 开机自启，并静默拉起后台托盘网关**！全程零手动配置！
+1. **克隆项目并在 Antigravity IDE 中打开本项目文件夹**：
+   ```bash
+   git clone https://github.com/Keep-Self-Alive/antigravity-wechat-bridge.git
+   ```
+2. **在 Antigravity 聊天框中直接发送一句提示词**：
+   > 💬 **“帮我配置并绑定微信”**
+3. **AI 会自动执行依赖安装、弹出微信绑定二维码，并在你扫码确认后自动配置好后台守护与开机自启！**
 
 ---
 
-### 🥈 方式 2：终端一键配置 (扫码即用)
-
-在终端中只需一行命令：
+### 🥈 方式 2：终端标准安装 (扫码即用)
 
 ```bash
+# 1. 克隆并安装依赖
 git clone https://github.com/Keep-Self-Alive/antigravity-wechat-bridge.git
 cd antigravity-wechat-bridge
 npm install
 
-# 启动一键配置向导（会自动弹出发版二维码，微信扫码后全自动保存配置、注入开机自启并启动托盘服务）
+# 2. 运行一键扫码配置向导
 npm run setup
 ```
+> *(执行后会自动在浏览器弹出腾讯官方微信绑定二维码，手机扫码确认后全自动保存凭证并启动后台网关)*
 
 ---
 
-### 🥉 方式 3：手动自定义配置
+### 🥉 方式 3：手动配置 (高级开发者)
 
 1. 复制环境变量模板：`cp .env.example .env` 并填入 Token
 2. 启动服务：`npm run wechat:live` 或 `python scripts/tray_companion.py`
