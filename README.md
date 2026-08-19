@@ -1,6 +1,8 @@
 # 🚀 Antigravity WeChat Bridge (微信 ↔ Google Antigravity IDE 智能网关)
 
 <p align="center">
+  <img src="https://img.shields.io/github/stars/Keep-Self-Alive/antigravity-wechat-bridge?style=social" alt="GitHub stars">
+  <img src="https://img.shields.io/github/forks/Keep-Self-Alive/antigravity-wechat-bridge?style=social" alt="GitHub forks">
   <img src="https://img.shields.io/badge/Antigravity%20IDE-2.8.1+-blue.svg" alt="Antigravity Version">
   <img src="https://img.shields.io/badge/Tencent%20WeChat-iLink%20AI%20Bot-brightgreen.svg" alt="WeChat Bot">
   <img src="https://img.shields.io/badge/TypeScript-5.0+-3178C6.svg" alt="TypeScript">
