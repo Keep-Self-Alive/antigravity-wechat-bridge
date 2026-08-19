@@ -1,0 +1,91 @@
+# 📖 Antigravity WeChat Bridge (V1.0 生产版) 运维与使用指南
+
+> **Google Antigravity IDE ↔ 腾讯微信 AI 官方双向连接网关**
+> 本项目已正式落地保存在：`E:\001核心文件\01项目\antigravity-wechat-bridge`
+
+---
+
+## 🌟 一、 关闭当前开发会话后的常驻运行指引
+
+当您关闭当前 IDE 开发会话后，只需确保 **Antigravity IDE 软件在电脑上开着**（最小化即可），网关服务即可在后台为您提供 7x24 小时的微信全功能连接。
+
+您可以通过以下两种方式随时管理和启动后台服务：
+
+---
+
+### 方式 1：Windows 极简双击启动（日常最推荐，零命令）
+
+进入项目目录：`E:\001核心文件\01项目\antigravity-wechat-bridge\scripts\`
+
+* **🔕 后台静默运行（无任何黑窗口打扰）**：
+  * **双击运行 `start_silent.vbs`**
+  * 服务会立即在后台隐形常驻运行，不占任务栏、不弹黑框。
+* **💻 调试模式运行（查看实时收发日志）**：
+  * **双击运行 `start_console.bat`**
+  * 会弹出一个控制台窗口，实时滚动显示微信收发、模型思考与文件上传日志。
+
+---
+
+### 方式 2：PM2 企业级守护（支持崩溃秒级自愈与开机无感自启）
+
+打开电脑终端（CMD / PowerShell），执行：
+
+```bash
+# 1. 进入项目目录
+cd /d "E:\001核心文件\01项目\antigravity-wechat-bridge"
+
+# 2. 启动 PM2 守护
+pm2 start ecosystem.config.cjs
+
+# 3. 常用管理指令
+pm2 status                       # 查看服务运行状态与内存占用
+pm2 logs antigravity-wechat-bridge # 查看实时运行日志
+pm2 restart antigravity-wechat-bridge # 一键重启服务
+pm2 stop antigravity-wechat-bridge    # 停止服务
+
+# 4. 配置 Windows 开机自启（只需设置一次）
+npm install -g pm2-windows-startup
+pm2-startup install
+pm2 save
+```
+
+---
+
+## 📱 二、 微信手机端常用指令速查表
+
+随时拿起手机打开微信对话框，直接发送以下指令：
+
+| 用户微信发送 | 触发功能与效果 |
+| :--- | :--- |
+| **直接发文字 / 语音** | 与 AI 开启对话，支持写代码、做报表、聊天陪伴等全功能 |
+| **直接发图片 / 文件** | AI 自动流式下载解密并读取分析附件内容 |
+| **`会话`** | 查看最近 10 个 IDE 会话列表（带相对时间与当前标识） |
+| **`所有会话`** | 查看 IDE 中所有的历史会话完整列表 |
+| **`切换 1`**（或 2、3） | 快速切换到指定编号的会话，无缝接续历史上下文 |
+| **`新建`** | 在 IDE 中开辟全新独立会话并自动切换 |
+| **`主会话`** | 一键返回微信默认主会话 |
+| **`模型`** | 查看 7 大主流 AI 模型实时额度与刷新倒计时 |
+| **`模型 1`**（~ `模型 7`） | 一键切换底层模型（Gemini 3.7 / Claude 4.6 / GPT-OSS 等） |
+| **`状态`** | 查看当前 IDE 端口连接与本地数据同步状态 |
+
+---
+
+## 🛠️ 三、 核心文件与配置说明
+
+| 路径 | 说明 |
+| :--- | :--- |
+| `E:\001核心文件\01项目\antigravity-wechat-bridge\.env` | 微信 Bot 凭证与全局配置文件 |
+| `E:\001核心文件\01项目\antigravity-wechat-bridge\logs\` | PM2 生产环境运行与错误日志 |
+| `~/.antigravity-wechat/history/` | 本地 Markdown 与 JSONL 会话持久化备份 |
+| `~/.antigravity-wechat/media/` | 微信收发图片与大文件本地缓存 |
+
+---
+
+## 💡 四、 常见问题与排查
+
+1. **问：为什么微信发消息提示服务未连接？**
+   * **答**：请检查电脑上的 Antigravity IDE 是否已打开。只要 IDE 打开，网关会在 1 秒内自愈探测并连接。
+2. **问：发送大文件或视频会卡住吗？**
+   * **答**：系统已集成 Node.js Stream 分块流式加密管道，几十 MB 至上百 MB 文件边加密边上传，内存恒定保持在 20MB 左右。
+3. **问：如果我想修改配置（如换 Bot Token）怎么办？**
+   * **答**：直接编辑 `E:\001核心文件\01项目\antigravity-wechat-bridge\.env` 文件，保存后重启服务即可。

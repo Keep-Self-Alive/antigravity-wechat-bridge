@@ -1,0 +1,26 @@
+{
+  "name": "antigravity-wechat-bridge",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Cross-platform Bidirectional WeChat & ClawBot Bridge for Google Antigravity",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "wechat:live": "tsx scripts/start-live-wechat.ts",
+    "test:discovery": "tsx src/discovery.ts",
+    "test:cli": "tsx scripts/test-cli.ts",
+    "build": "tsc"
+  },
+  "keywords": ["antigravity", "wechat", "clawbot", "openclaw", "acp", "ai-agent"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/ws": "^8.5.10",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.0"
+  }
+}
