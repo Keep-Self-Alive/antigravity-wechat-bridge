@@ -37,10 +37,9 @@ export class ConfigManager {
       }
     }
 
-    // 2. Also check ~/.openclaw/openclaw-weixin/accounts for credentials if available
-    let fallbackToken = '8eb44d7de992@im.bot:0600000fb2b8c21deaaa991d8b6370e926bec1';
-    let fallbackBotId = '8eb44d7de992@im.bot';
-    let fallbackUser = 'o9cq809QQHRoVwq1U9581Yz_a_ac@im.wechat';
+    let fallbackToken = '';
+    let fallbackBotId = '';
+    let fallbackUser = '';
 
     this.config = {
       botToken: process.env.WECHAT_BOT_TOKEN || envMap['WECHAT_BOT_TOKEN'] || fallbackToken,

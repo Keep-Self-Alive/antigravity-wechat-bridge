@@ -1,21 +1,20 @@
 # 📖 Antigravity WeChat Bridge (V1.0) 运维与使用指南
 
 > **Google Antigravity IDE ↔ 腾讯微信 AI 官方双向连接网关**
-> 本项目已正式落地保存在：`E:\001核心文件\01项目\antigravity-wechat-bridge`
 
 ---
 
-## 🌟 一、 关闭当前开发会话后的常驻运行指引
+## 🌟 一、 后台常驻运行指引
 
-当您关闭当前 IDE 开发会话后，只需确保 **Antigravity IDE 软件在电脑上开着**（最小化即可），网关服务即可在后台为您提供 7x24 小时的微信全功能连接。
+只要确保 **Antigravity IDE 软件在电脑上开着**（最小化即可），网关服务即可在后台为您提供 7x24 小时的微信全功能连接。
 
-您可以通过以下两种方式随时管理和启动后台服务：
+您可以通过以下方式随时管理和启动后台服务：
 
 ---
 
 ### 方式 1：Windows 极简双击启动（日常最推荐，零命令）
 
-进入项目目录：`E:\001核心文件\01项目\antigravity-wechat-bridge\scripts\`
+进入项目下的 `scripts/` 目录：
 
 * **🔕 后台静默运行（无任何黑窗口打扰）**：
   * **双击运行 `start_silent.vbs`**
@@ -26,13 +25,13 @@
 
 ---
 
-### 方式 2：PM2 进程守护（支持崩溃秒级自愈与开机无感自启）
+### 方式 2：PM2 进程守护
 
 打开电脑终端（CMD / PowerShell），执行：
 
 ```bash
-# 1. 进入项目目录
-cd /d "E:\001核心文件\01项目\antigravity-wechat-bridge"
+# 1. 进入项目根目录
+cd antigravity-wechat-bridge
 
 # 2. 启动 PM2 守护
 pm2 start ecosystem.config.cjs
@@ -43,7 +42,7 @@ pm2 logs antigravity-wechat-bridge # 查看实时运行日志
 pm2 restart antigravity-wechat-bridge # 一键重启服务
 pm2 stop antigravity-wechat-bridge    # 停止服务
 
-# 4. 配置 Windows 开机自启（只需设置一次）
+# 4. 配置 Windows 开机自启
 npm install -g pm2-windows-startup
 pm2-startup install
 pm2 save
@@ -74,8 +73,8 @@ pm2 save
 
 | 路径 | 说明 |
 | :--- | :--- |
-| `E:\001核心文件\01项目\antigravity-wechat-bridge\.env` | 微信 Bot 凭证与全局配置文件 |
-| `E:\001核心文件\01项目\antigravity-wechat-bridge\logs\` | PM2 生产环境运行与错误日志 |
+| `./.env` | 微信 Bot 凭证与全局配置文件 |
+| `./logs/` | 生产环境运行与错误日志 |
 | `~/.antigravity-wechat/history/` | 本地 Markdown 与 JSONL 会话持久化备份 |
 | `~/.antigravity-wechat/media/` | 微信收发图片与大文件本地缓存 |
 
@@ -88,4 +87,4 @@ pm2 save
 2. **问：发送大文件或视频会卡住吗？**
    * **答**：系统已集成 Node.js Stream 分块流式加密管道，几十 MB 至上百 MB 文件边加密边上传，内存恒定保持在 20MB 左右。
 3. **问：如果我想修改配置（如换 Bot Token）怎么办？**
-   * **答**：直接编辑 `E:\001核心文件\01项目\antigravity-wechat-bridge\.env` 文件，保存后重启服务即可。
+   * **答**：直接编辑 `.env` 文件，保存后重启服务即可。
