@@ -5,6 +5,7 @@
   "description": "Cross-platform Bidirectional WeChat & ClawBot Bridge for Google Antigravity",
   "main": "dist/src/index.js",
   "scripts": {
+    "setup": "tsx scripts/auto-setup.ts",
     "dev": "tsx src/index.ts",
     "wechat:live": "tsx scripts/start-live-wechat.ts",
     "test:discovery": "tsx src/discovery.ts",

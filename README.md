@@ -43,33 +43,19 @@
 
 ## 🚀 快速上手 (Quick Start)
 
-### 1. 克隆项目与安装依赖
+### 方式 1：🔥 零门槛一键配置 (极力推荐，扫码即用)
 ```bash
-git clone https://github.com/your-username/antigravity-wechat-bridge.git
+git clone https://github.com/Keep-Self-Alive/antigravity-wechat-bridge.git
 cd antigravity-wechat-bridge
 npm install
+
+# 运行一键配置向导（会自动弹出发版二维码，微信扫码后全自动保存配置、注入开机自启并启动托盘服务）
+npm run setup
 ```
 
-### 2. 配置环境变量
-复制模板文件并填入您的微信 Bot 凭证：
-```bash
-cp .env.example .env
-```
-编辑 `.env`：
-```env
-WECHAT_BOT_TOKEN=your_bot_id@im.bot:your_secret_token
-WECHAT_BOT_ID=your_bot_id@im.bot
-WECHAT_ALLOWED_USER=your_wechat_id@im.wechat
-```
-
-### 3. 编译并启动
-```bash
-# 方式 A：控制台前台启动
-npm run wechat:live
-
-# 方式 B：现代系统托盘伴侣启动 (推荐)
-python scripts/tray_companion.py
-```
+### 方式 2：手动自定义配置
+1. 复制模板：`cp .env.example .env` 并填入 Token
+2. 启动服务：`npm run wechat:live` 或 `python scripts/tray_companion.py`
 
 ---
 
